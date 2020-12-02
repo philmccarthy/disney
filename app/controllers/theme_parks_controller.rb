@@ -6,4 +6,17 @@ class ThemeParksController < ApplicationController
   def show
     @theme_park = ThemePark.find(params[:id])
   end
+
+  def new
+  end
+
+  def create
+    theme_park = ThemePark.new({
+            name: params[:name],
+            city: params[:city],
+            open: params[:open]
+          })
+        theme_park.save
+        redirect_to '/themeparks'
+  end
 end
