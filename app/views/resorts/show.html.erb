@@ -1,0 +1,13 @@
+<a href="/resorts">Resorts Index</a>
+
+<h1><%= @resort.name %></h1>
+<ul>
+  <li> Amount of Rooms: <%= @resort.amount_of_rooms %></li>
+  <li><% if @resort.vacancy %>
+           Vacancy
+      <% else %>
+           No Vacancy
+
+      <% end %>
+  </li>
+</ul>
