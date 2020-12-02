@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_224322) do
+ActiveRecord::Schema.define(version: 2020_12_02_210229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "resorts", force: :cascade do |t|
-    t.integer "resort_id"
     t.string "name"
     t.integer "amount_of_rooms"
     t.boolean "vacancy"
@@ -26,16 +25,15 @@ ActiveRecord::Schema.define(version: 2020_12_01_224322) do
 
   create_table "rides", force: :cascade do |t|
     t.string "name"
-    t.integer "theme_park_id"
     t.integer "max_occupants"
     t.boolean "opperational"
-    t.integer "ride_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "theme_park_id"
+    t.index ["theme_park_id"], name: "index_rides_on_theme_park_id"
   end
 
   create_table "theme_parks", force: :cascade do |t|
-    t.integer "theme_park_id"
     t.string "name"
     t.string "city"
     t.boolean "open"
@@ -44,13 +42,15 @@ ActiveRecord::Schema.define(version: 2020_12_01_224322) do
   end
 
   create_table "vacationers", force: :cascade do |t|
-    t.integer "vacationer_id"
     t.string "first_name"
     t.string "last_name"
-    t.integer "resort_id"
     t.boolean "checked_in"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "resort_id"
+    t.index ["resort_id"], name: "index_vacationers_on_resort_id"
   end
 
+  add_foreign_key "rides", "theme_parks"
+  add_foreign_key "vacationers", "resorts"
 end
