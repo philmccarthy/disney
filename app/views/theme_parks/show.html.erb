@@ -1,0 +1,13 @@
+<a href="/themeparks">Theme Parks Index</a>
+
+<h1><%= @theme_park.name %></h1>
+<ul>
+  <li><%= @theme_park.city %></li>
+  <li><% if @theme_park.open %>
+           Open
+      <% else %>
+           Closed
+           
+      <% end %>
+  </li>     
+</ul>

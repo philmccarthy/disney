@@ -1,0 +1,2 @@
+class ThemePark < ApplicationRecord
+end
