@@ -26,14 +26,19 @@ class ResortsController < ApplicationController
   end
 
   def update
-      resort = Resort.find(params[:id])
-      resort.update({
-            name: params[:name],
-            amount_of_rooms: params[:amount_of_rooms],
-            vacancy: params[:vacancy]
-          })
-        resort.save
-        redirect_to "/resorts/#{resort.id}"
+    resort = Resort.find(params[:id])
+    resort.update({
+          name: params[:name],
+          amount_of_rooms: params[:amount_of_rooms],
+          vacancy: params[:vacancy]
+        })
+      resort.save
+      redirect_to "/resorts/#{resort.id}"
+  end
+
+  def destroy
+    Resort.destroy(params[:id])
+    redirect_to "/resorts"
   end
 
 end

@@ -12,3 +12,6 @@
   </li>
 </ul>
 <a href="/resorts/<%= @resort.id %>/edit">Edit</a>
+<%= form_tag("/resorts/#{@resort.id}", method: :delete) do %>
+  <%= submit_tag 'Delete Resort' %>
+<% end %>
