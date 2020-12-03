@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/themeparks/:id/edit', to: 'theme_parks#edit'
   get '/resorts/new', to: 'resorts#new'
   get '/resorts/:id', to: 'resorts#show'
+  get '/resorts/:id/edit', to: 'resorts#edit'
 end
