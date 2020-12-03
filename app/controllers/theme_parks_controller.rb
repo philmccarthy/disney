@@ -34,4 +34,9 @@ class ThemeParksController < ApplicationController
         theme_park.save
         redirect_to "/themeparks/#{theme_park.id}"
   end
+
+  def destroy
+    ThemePark.destroy(params[:id])
+    redirect_to '/themeparks'
+  end
 end
