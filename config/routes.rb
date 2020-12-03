@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/resorts/new', to: 'resorts#new'
   get '/resorts/:id', to: 'resorts#show'
   get '/resorts/:id/edit', to: 'resorts#edit'
+  post '/resorts/:id', to: 'resorts#update'
 end
