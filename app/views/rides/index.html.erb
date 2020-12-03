@@ -1,0 +1,13 @@
+<h1>All Disney Rides</h1>
+<ul>
+ <% @rides.each do |ride| %>
+    <h3><%= ride.name %></h3>
+    <li>Theme Park: <%= ride.theme_park.name %></li>
+    <li>Max Occupants: <%= ride.max_occupants %></li>
+    <li><% if ride.opperational %>
+      Opperational
+    <% else %>
+      Not Opperational
+    <% end %></li>
+  <% end %>
+</ul>
