@@ -11,3 +11,6 @@
   </li>     
 </ul>
 <a href="/themeparks/<%= @theme_park.id %>/edit">Edit</a>
+<%= form_tag("/themeparks/#{@theme_park.id}", method: :delete) do %>
+  <%= submit_tag 'Delete Theme Park' %>
+<% end %>
