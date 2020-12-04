@@ -1,0 +1,8 @@
+<h1>All Disney Vacationers</h1>
+
+<ul>
+  <% @vacationers.each do |vacationer| %>
+    <h3><%= vacationer.first_name %> <%= vacationer.last_name %> </h3>
+    <li>Checked in: <%= vacationer.checked_in %></li>
+    <% end %>
+  </ul>

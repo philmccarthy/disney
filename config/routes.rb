@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   delete '/resorts/:id', to: 'resorts#destroy'
   delete '/themeparks/:id', to: 'theme_parks#destroy'
   post '/resorts', to: 'resorts#create'
@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   patch '/resorts/:id', to: 'resorts#update'
 
   get '/rides', to: 'rides#index'
+  get '/vacationers', to: 'vacationers#index'
 end
