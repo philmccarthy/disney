@@ -39,4 +39,8 @@ class ThemeParksController < ApplicationController
     ThemePark.destroy(params[:id])
     redirect_to '/themeparks'
   end
+
+  def rides
+    @theme_park = ThemePark.find(params[:id])
+  end
 end
