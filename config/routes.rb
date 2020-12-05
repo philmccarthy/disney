@@ -11,12 +11,15 @@ Rails.application.routes.draw do
   get '/themeparks', to: 'theme_parks#index'
   get '/themeparks/new', to: 'theme_parks#new'
   get '/themeparks/:id', to: 'theme_parks#show'
+  get '/themeparks/:id/rides', to: 'theme_parks#rides'
   get '/themeparks/:id/edit', to: 'theme_parks#edit'
   get '/resorts/new', to: 'resorts#new'
   get '/resorts/:id', to: 'resorts#show'
   get '/resorts/:id/edit', to: 'resorts#edit'
   patch '/resorts/:id', to: 'resorts#update'
-
+  post '/rides/:id', to: 'rides#update'
   get '/rides', to: 'rides#index'
+  get '/rides/:id', to: 'rides#show'
+  get '/rides/:id/edit', to: 'rides#edit'
   get '/vacationers', to: 'vacationers#index'
 end
