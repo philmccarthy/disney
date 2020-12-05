@@ -13,13 +13,14 @@ RSpec.describe 'Ride Show Page', type: :feature do
     expect(page).to have_content(ride_1.max_occupants)
     expect(page).to have_content("Operational")
     expect(page).to have_link("Edit", href: "/rides/#{ride_1.id}/edit")
+    expect(page).to have_button("Delete")
 
     visit "/rides/#{ride_2.id}"
-    save_and_open_page
 
     expect(page).to have_content(ride_2.name)
     expect(page).to have_content(ride_2.max_occupants)
     expect(page).to have_content("Not Operational")
     expect(page).to have_link("Edit", href: "/rides/#{ride_2.id}/edit")
+    expect(page).to have_button("Delete")
   end
 end
