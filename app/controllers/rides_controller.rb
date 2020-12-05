@@ -21,4 +21,9 @@ class RidesController < ApplicationController
     ride.save
     redirect_to "/rides/#{ride.id}"
   end
+
+  def destroy
+    Ride.destroy(params[:id])
+    redirect_to '/rides'
+  end
 end
