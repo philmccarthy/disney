@@ -41,4 +41,8 @@ class ResortsController < ApplicationController
     redirect_to "/resorts"
   end
 
+  def vacationers
+    @resort = Resort.find(params[:id])
+  end
+
 end
