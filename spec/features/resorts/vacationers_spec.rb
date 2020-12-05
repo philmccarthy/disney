@@ -18,14 +18,27 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
     expect(page).to have_content(vacationer_2.last_name)
     expect(page).to have_content(vacationer_2.checked_in)
     expect(page).to have_link("New Vacationer", href: "/resorts/#{resort_1.id}/vacationers/new")
-
+    click_link "New Vacationer"
+    fill_in 'First name', with: 'first_name'
+    fill_in 'Last name', with: 'last_name'
+    select 'true', from: 'Checked in'
+    click_button "Create Vacationer"
+    expect(page).to have_content("first_name")
+    expect(page).to have_content("last_name")
+    expect(page).to have_content("Checked in: true")
 
     visit "/resorts/#{resort_2.id}/vacationers"
-    
     expect(page).to have_content(vacationer_3.first_name)
     expect(page).to have_content(vacationer_3.last_name)
     expect(page).to have_content(vacationer_3.checked_in)
     expect(page).to have_link("New Vacationer", href: "/resorts/#{resort_2.id}/vacationers/new")
-
+    click_link "New Vacationer"
+    fill_in 'First name', with: 'first_name'
+    fill_in 'Last name', with: 'last_name'
+    select 'true', from: 'Checked in'
+    click_button "Create Vacationer"
+    expect(page).to have_content("first_name")
+    expect(page).to have_content("last_name")
+    expect(page).to have_content("Checked in: true")
   end
 end
