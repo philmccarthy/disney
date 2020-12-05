@@ -17,11 +17,13 @@ RSpec.describe 'Rides of ThemePark', type: :feature do
     expect(page).to have_content(ride_2.name)
     expect(page).to have_content(ride_2.max_occupants)
     expect(page).to have_content("Not Operational")
-
+    expect(page).to have_link("New Ride", href: "/themeparks/#{epcot.id}/rides/new")
+    
     visit "/themeparks/#{magic_kingdom.id}/rides"
     
     expect(page).to have_content(ride_3.name)
     expect(page).to have_content(ride_3.max_occupants)
     expect(page).to have_content("Operational")
+    expect(page).to have_link("New Ride", href: "/themeparks/#{magic_kingdom.id}/rides/new")
   end
 end
