@@ -53,10 +53,9 @@ RSpec.describe 'Vacationer Show', type: :feature do
     visit "/vacationers/#{vacationer_1.id}"
 
     expect(page).to have_button("Delete")
-    click_link "Delete"
+    click_button "Delete Vacationer"
     save_and_open_page
     expect(page).to have_no_content("Ruby")
-
   end
 
 end

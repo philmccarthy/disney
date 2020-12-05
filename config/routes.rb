@@ -31,4 +31,5 @@ Rails.application.routes.draw do
   post '/resorts/:id/vacationers', to: 'resorts#create_vacationer'
   get '/vacationers/:id/edit', to: 'vacationers#edit'
   patch '/vacationers/:id', to: 'vacationers#update'
+  delete '/vacationers/:id', to: 'vacationers#destroy'
 end
