@@ -40,7 +40,7 @@ RSpec.describe 'Vacationer Show', type: :feature do
     fill_in 'First name', with: 'first_name'
     fill_in 'Last name', with: 'last_name'
     select 'true', from: 'Checked in'
-    click_button "Create Vacationer"
+    click_button "Edit Vacationer"
     save_and_open_page
     expect(page).to have_content("first_name")
     expect(page).to have_content("last_name")
