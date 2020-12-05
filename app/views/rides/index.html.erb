@@ -4,10 +4,10 @@
     <h3><%= ride.name %></h3>
     <li>Theme Park: <%= ride.theme_park.name %></li>
     <li>Max Occupants: <%= ride.max_occupants %></li>
-    <li><% if ride.opperational %>
-      Opperational
+    <li><% if ride.operational %>
+      Operational
     <% else %>
-      Not Opperational
+      Not Operational
     <% end %></li>
   <% end %>
 </ul>

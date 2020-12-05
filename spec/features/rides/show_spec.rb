@@ -1,29 +1,26 @@
 require 'rails_helper'
 
-RSpec.describe 'Rides Index', type: :feature do
+RSpec.describe 'Ride Show Page', type: :feature do
 
-  it 'shows all rides' do
+  it 'shows individual ride details' do
     epcot = ThemePark.create(name: 'Epcot', city: 'Orlando', open: false)
-    magic_kingdom = ThemePark.create(name: 'Magic Kingdom', city: 'Orlando', open: true)
-
     ride_1 = epcot.rides.create!(name: "Mission: SPACE", max_occupants: 70, operational: true)
     ride_2 = epcot.rides.create!(name: "Test Track", max_occupants: 40, operational: false)
-    ride_3 = magic_kingdom.rides.create!(name: "Space Mountain", max_occupants: 65, operational: true)
 
-    visit '/rides'
+    visit "/rides/#{ride_1.id}"
 
     expect(page).to have_content(ride_1.name)
     expect(page).to have_content(ride_1.max_occupants)
     expect(page).to have_content("Operational")
+    expect(page).to have_link("Edit", href: "/rides/#{ride_1.id}/edit")
+    expect(page).to have_button("Delete")
+
+    visit "/rides/#{ride_2.id}"
 
     expect(page).to have_content(ride_2.name)
     expect(page).to have_content(ride_2.max_occupants)
     expect(page).to have_content("Not Operational")
-
-    expect(page).to have_content(ride_3.name)
-    expect(page).to have_content(ride_3.max_occupants)
-    expect(page).to have_content("Operational")
-    
-
+    expect(page).to have_link("Edit", href: "/rides/#{ride_2.id}/edit")
+    expect(page).to have_button("Delete")
   end
 end
