@@ -21,7 +21,7 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
 
 
     visit "/resorts/#{resort_2.id}/vacationers"
-
+    
     expect(page).to have_content(vacationer_3.first_name)
     expect(page).to have_content(vacationer_3.last_name)
     expect(page).to have_content(vacationer_3.checked_in)
