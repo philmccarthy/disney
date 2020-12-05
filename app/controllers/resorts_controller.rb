@@ -2,6 +2,7 @@ class ResortsController < ApplicationController
 
   def index
     @resorts = Resort.all
+    @ordered_resorts = @resorts.order("created_at").reverse_order
   end
 
   def show
