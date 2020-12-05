@@ -6,4 +6,8 @@ class VacationersController < ApplicationController
   def show
     @vacationer = Vacationer.find(params[:id])
   end
+
+  def edit
+    @vacationer = Vacationer.find(params[:id])
+  end
 end
