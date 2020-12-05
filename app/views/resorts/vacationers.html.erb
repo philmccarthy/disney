@@ -1,0 +1,5 @@
+<h1>Vacationers at <%= @resort.name %> </h1>
+<% @resort.vacationers.each do |vacationer| %>
+  <h3><%= vacationer.first_name %> <%= vacationer.last_name %></h3>
+  <p>Checked in: <%= vacationer.checked_in %></p>
+  <% end %>
