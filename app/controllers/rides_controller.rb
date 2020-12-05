@@ -19,6 +19,6 @@ class RidesController < ApplicationController
       operational: params[:operational]
       })
     ride.save
-    redirect_to "rides/#{ride.id}"
+    redirect_to "/rides/#{ride.id}"
   end
 end
