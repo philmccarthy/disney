@@ -30,5 +30,5 @@ Rails.application.routes.draw do
   get '/resorts/:id/vacationers/new', to: 'resorts#new_vacationer'
   post '/resorts/:id/vacationers', to: 'resorts#create_vacationer'
   get '/vacationers/:id/edit', to: 'vacationers#edit'
-  patch '/vacationers/:id' to: 'vacationers#update'
+  patch '/vacationers/:id', to: 'vacationers#update'
 end
