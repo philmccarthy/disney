@@ -21,4 +21,9 @@ class VacationersController < ApplicationController
       vacationer.save
       redirect_to "/vacationers/#{vacationer.id}"
   end
+
+  def destroy
+    Vacationer.destroy(params[:id])
+    redirect_to '/vacationers'
+  end
 end
