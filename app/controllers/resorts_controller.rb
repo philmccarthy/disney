@@ -45,4 +45,8 @@ class ResortsController < ApplicationController
     @resort = Resort.find(params[:id])
   end
 
+  def new_vacationer
+    @resort = Resort.find(params[:id])
+  end
+
 end
