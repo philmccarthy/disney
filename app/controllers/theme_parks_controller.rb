@@ -43,4 +43,18 @@ class ThemeParksController < ApplicationController
   def rides
     @theme_park = ThemePark.find(params[:id])
   end
+
+  def new_ride
+    @theme_park = ThemePark.find(params[:id])
+  end
+  
+  def create_ride
+    @theme_park = ThemePark.find(params[:id])
+    @theme_park.rides.create!({
+      name: params[:name],
+      max_occupants: params[:max_occupants],
+      operational: params[:operational]
+      })
+    redirect_to "/themeparks/#{@theme_park.id}/rides"
+  end
 end
