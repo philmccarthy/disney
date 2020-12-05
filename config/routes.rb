@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   delete '/resorts/:id', to: 'resorts#destroy'
   delete '/themeparks/:id', to: 'theme_parks#destroy'
+  delete '/rides/:id', to: 'rides#destroy'
   post '/resorts', to: 'resorts#create'
   post '/themeparks', to: 'theme_parks#create'
   patch '/themeparks/:id', to: 'theme_parks#update'
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   get '/themeparks/new', to: 'theme_parks#new'
   get '/themeparks/:id', to: 'theme_parks#show'
   get '/themeparks/:id/rides', to: 'theme_parks#rides'
+  get '/themeparks/:id/rides/new', to: 'theme_parks#new_ride'
+  post '/themeparks/:id/rides', to: 'theme_parks#create_ride'
   get '/themeparks/:id/edit', to: 'theme_parks#edit'
   get '/resorts/new', to: 'resorts#new'
   get '/resorts/:id', to: 'resorts#show'
