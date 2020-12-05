@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get '/rides/:id/edit', to: 'rides#edit'
   get '/vacationers', to: 'vacationers#index'
   get '/resorts/:id/vacationers', to: 'resorts#vacationers'
+  get '/vacationers/:id', to: 'vacationers#show'
 end
