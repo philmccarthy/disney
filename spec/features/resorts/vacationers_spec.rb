@@ -17,11 +17,15 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
     expect(page).to have_content(vacationer_2.first_name)
     expect(page).to have_content(vacationer_2.last_name)
     expect(page).to have_content(vacationer_2.checked_in)
+    expect(page).to have_link("New Vacationer", href: "/resorts/#{resort_1.id}/vacationers/new")
+
 
     visit "/resorts/#{resort_2.id}/vacationers"
 
     expect(page).to have_content(vacationer_3.first_name)
     expect(page).to have_content(vacationer_3.last_name)
     expect(page).to have_content(vacationer_3.checked_in)
+    expect(page).to have_link("New Vacationer", href: "/resorts/#{resort_2.id}/vacationers/new")
+
   end
 end
