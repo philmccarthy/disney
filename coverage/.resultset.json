@@ -368,6 +368,7 @@
           1,
           1,
           1,
+          1,
           null
         ]
       },
@@ -377,42 +378,7 @@
           null
         ]
       },
-      "/Users/catherinedean/Turing/mod_2/projects/disney/spec/features/resorts/index_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/catherinedean/Turing/mod_2/projects/disney/spec/features/resorts/new_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/catherinedean/Turing/mod_2/projects/disney/spec/features/resorts/show_spec.rb": {
+      "/Users/catherinedean/Turing/mod_2/projects/disney/spec/features/vacationers/show_spec.rb": {
         "lines": [
           1,
           null,
@@ -423,51 +389,28 @@
           1,
           null,
           1,
-          null,
-          1,
-          1,
-          1,
           1,
           1,
           null,
           1,
           null,
-          1,
-          1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
           null,
-          null
-        ]
-      },
-      "/Users/catherinedean/Turing/mod_2/projects/disney/spec/features/resorts/vacationers_spec.rb": {
-        "lines": [
-          1,
+          0,
           null,
-          1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
           null,
-          1,
-          1,
-          1,
+          0,
           null,
-          1,
+          0,
+          0,
+          0,
           null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           null,
-          1,
-          null,
-          1,
-          1,
-          1,
           null,
           null
         ]
@@ -486,54 +429,19 @@
           null
         ]
       },
-      "/Users/catherinedean/Turing/mod_2/projects/disney/app/controllers/resorts_controller.rb": {
+      "/Users/catherinedean/Turing/mod_2/projects/disney/app/models/vacationer.rb": {
         "lines": [
           1,
-          null,
-          1,
           1,
           null,
-          null,
+          null
+        ]
+      },
+      "/Users/catherinedean/Turing/mod_2/projects/disney/app/controllers/vacationers_controller.rb": {
+        "lines": [
           1,
-          2,
-          null,
-          null,
           1,
-          null,
-          null,
           1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          2,
-          null,
           null,
           null
         ]
@@ -543,16 +451,8 @@
           1,
           null
         ]
-      },
-      "/Users/catherinedean/Turing/mod_2/projects/disney/app/models/vacationer.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          null
-        ]
       }
     },
-    "timestamp": 1607193136
+    "timestamp": 1607194535
   }
 }
