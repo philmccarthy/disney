@@ -1,0 +1,11 @@
+<h1>Rides at <%= @theme_park.name %></h1>
+<% @theme_park.rides.each do |ride| %>
+  <h3><%= ride.name %></h3>
+  <li>Max Occupants: <%= ride.max_occupants %></li>
+      <% if ride.operational %>
+        <li>Operational</li>
+      <% else %>
+        <li>Not Operational</li>
+      <% end %>
+<% end %>
+  
