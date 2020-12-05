@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   get '/vacationers', to: 'vacationers#index'
   get '/resorts/:id/vacationers', to: 'resorts#vacationers'
   get '/vacationers/:id', to: 'vacationers#show'
+  get '/resorts/:id/vacationers/new', to: 'resorts#new_vacationer'
+  post '/resorts/:id/vacationers', to: 'resorts#create_vacationer'
 end
