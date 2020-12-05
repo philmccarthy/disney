@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Resorts New', type: :feature do
+RSpec.describe 'Resorts Edit', type: :feature do
 
   it 'has editing fields' do
     resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
