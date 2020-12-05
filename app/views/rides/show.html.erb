@@ -1,0 +1,16 @@
+<a href="/rides">Rides Index</a>
+
+<h1><%= @ride.name %></h1>
+<ul>
+  <li> Max Occupants: <%= @ride.max_occupants %></li>
+  <li><% if @ride.operational %>
+           Operational
+      <% else %>
+           Not Operational
+      <% end %>
+  </li>
+</ul>
+<a href="/rides/<%= @ride.id %>/edit">Edit</a>
+<%= form_tag("/rides/#{@ride.id}", method: :delete) do %>
+  <%= submit_tag 'Delete Ride' %>
+<% end %>
