@@ -1,8 +1,8 @@
 <%= form_tag("/resorts/#{@resort.id}", method: :patch) do %>
   <%= label_tag :name %>
-  <%= text_field_tag :name, placeholder: @resort.name %>
+  <%= text_field_tag :name, @resort.name %>
   <%= label_tag :amount_of_rooms %>
-  <%= text_field_tag :amount_of_rooms, placeholder: @resort.amount_of_rooms %>
+  <%= text_field_tag :amount_of_rooms, @resort.amount_of_rooms %>
   <%= label_tag :vacancy %>
   <%= select_tag :vacancy, options_for_select([true, false], @resort.vacancy) %>
 

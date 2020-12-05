@@ -1,8 +1,8 @@
 <%= form_tag("/themeparks/#{@theme_park.id}", method: :patch) do %>
   <%= label_tag :name %>
-  <%= text_field_tag :name, placeholder: @theme_park.name %>
+  <%= text_field_tag :name, @theme_park.name %>
   <%= label_tag :city %>
-  <%= text_field_tag :city, placeholder: @theme_park.city %>
+  <%= text_field_tag :city,@theme_park.city %>
   <%= label_tag :open %>
   <%= select_tag :open, options_for_select([true, false], @theme_park.open) %>
 
