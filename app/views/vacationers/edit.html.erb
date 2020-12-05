@@ -1,0 +1,10 @@
+<%= form_tag("/vacationers/#{@vacationer.id}", method: :patch) do %>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name, @vacationer.first_name %>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name, @vacationer.last_name %>
+  <%= label_tag :checked_in %>
+  <%= select_tag :checked_in, options_for_select([true, false], @vacationer.checked_in) %>
+
+  <%= submit_tag 'Edit Vacationer' %>
+<% end %>

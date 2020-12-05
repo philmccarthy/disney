@@ -41,4 +41,22 @@ class ResortsController < ApplicationController
     redirect_to "/resorts"
   end
 
+  def vacationers
+    @resort = Resort.find(params[:id])
+  end
+
+  def new_vacationer
+    @resort = Resort.find(params[:id])
+  end
+
+  def create_vacationer
+    @resort = Resort.find(params[:id])
+    @resort.vacationers.create!({
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      checked_in: params[:checked_in]
+    })
+    redirect_to "/resorts/#{@resort.id}/vacationers"
+  end
+
 end
