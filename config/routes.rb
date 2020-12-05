@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/resorts/:id', to: 'resorts#show'
   get '/resorts/:id/edit', to: 'resorts#edit'
   patch '/resorts/:id', to: 'resorts#update'
-  post '/rides/:id', to: 'rides#update'
+  patch '/rides/:id', to: 'rides#update'
   get '/rides', to: 'rides#index'
   get '/rides/:id', to: 'rides#show'
   get '/rides/:id/edit', to: 'rides#edit'
