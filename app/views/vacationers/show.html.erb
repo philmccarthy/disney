@@ -2,3 +2,6 @@
 
 <p> Checked in: <%= @vacationer.checked_in %></p>
 <a href="/vacationers/<%= @vacationer.id %>/edit">Edit</a>
+<%= form_tag("/vacationers/#{@vacationer.id}", method: :delete) do %>
+  <%= submit_tag 'Delete Vacationer' %>
+<% end %>
