@@ -1,8 +1,8 @@
 <h1>Resorts!</h1>
 
 <ul>
-  <% @resorts.each do |resort| %>
-      <li><%= resort.name %></li>
+  <% @ordered_resorts.each do |resort| %>
+      <li><%= resort.name %>(Created at: <%= resort.created_at %>)</li>
     <% end %>
 </ul>
 <a href="/resorts/new/">New Resort</a>
