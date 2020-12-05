@@ -1,0 +1,10 @@
+<%= form_tag "/resorts/#{@resort.id}/vacationers" do %>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name %>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name %>
+  <%= label_tag :checked_in %>
+  <%= select_tag :checked_in, options_for_select([true, false]) %>
+
+  <%= submit_tag 'Create Vacationer' %>
+<% end %>
