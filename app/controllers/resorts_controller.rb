@@ -51,6 +51,11 @@ class ResortsController < ApplicationController
 
   def vacationers
     @resort = Resort.find(params[:id])
+    if params[:commit]
+      @vacationers = @resort.vacationers.order(:first_name)
+    else
+      @vacationers = @resort.vacationers
+    end
   end
 
   def new_vacationer
