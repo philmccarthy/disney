@@ -22,4 +22,15 @@ RSpec.describe 'ThemeParks Show Page', type: :feature do
     expect(page).to have_link("Edit", href: "/themeparks/#{tp_2.id}/edit")
     expect(page).to have_button('Delete Theme Park')
   end
+
+  it 'deletes theme parks' do
+    tp_1 = ThemePark.create(name: 'Magic Kingdom', city: 'Orlando', open: true)
+
+    visit "/themeparks/#{tp_1.id}"
+
+    expect(page).to have_content(tp_1.name)
+
+    click_button 'Delete Theme Park'
+    expect(page).to have_no_content(tp_1.name)
+  end
 end

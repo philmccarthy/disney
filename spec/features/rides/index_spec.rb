@@ -23,7 +23,5 @@ RSpec.describe 'Rides Index', type: :feature do
     expect(page).to have_content(ride_3.name)
     expect(page).to have_content(ride_3.max_occupants)
     expect(page).to have_content("Operational")
-    
-
   end
 end

@@ -23,4 +23,14 @@ RSpec.describe 'Ride Show Page', type: :feature do
     expect(page).to have_link("Edit", href: "/rides/#{ride_2.id}/edit")
     expect(page).to have_button("Delete")
   end
+
+  it 'deletes vacationers' do
+    epcot = ThemePark.create(name: 'Epcot', city: 'Orlando', open: false)
+    ride_1 = epcot.rides.create!(name: "Mission: SPACE", max_occupants: 70, operational: true)
+
+    visit "/rides/#{ride_1.id}"
+
+    click_button "Delete Ride"
+    expect(page).to have_no_content("Mission: SPACE")
+  end
 end
