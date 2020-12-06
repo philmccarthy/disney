@@ -1,5 +1,6 @@
 <h1>Theme Parks!</h1>
 
+<%= link_to 'Sort by number of rides', '?sort=x' %>
 <ul>
   <% @theme_parks.each do |theme_park| %>
       <h3><%= theme_park.name %></h3>
@@ -7,6 +8,9 @@
                         .in_time_zone("America/Denver")
                         .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
       </li>
+      <% if params[:sort] %>
+      <li>Number of Rides: <%= theme_park.rides.count %></li>
+      <% end %>
     <% end %>
 </ul>
 <a href="/themeparks/new">New Theme Park</a>
