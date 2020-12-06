@@ -4,6 +4,11 @@
   <%= text_field_tag :number_of_rooms %>
   <%= submit_tag 'Only show resorts with more than ____ rooms'%>
 <% end %>
+<br>
+<%= form_tag("/resorts", method: :get) do %>
+  <%= submit_tag 'Sort by number of vacationers', vacationers: :sort %>
+  <% end %>
+
 <ul>
   <% @ordered_resorts.each do |resort| %>
       <h3><%= resort.name %></h3>
@@ -11,6 +16,10 @@
                         .in_time_zone("America/Denver")
                         .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
       </li>
+      <li><% if params[:commit] %>
+          Vacationers: <%= resort.vacationers.count %>
+          <% end %>
+            </li>
     <% end %>
 </ul>
 <a href="/resorts/new/">New Resort</a>
