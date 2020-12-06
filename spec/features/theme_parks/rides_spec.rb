@@ -11,6 +11,7 @@ RSpec.describe 'Rides of ThemePark', type: :feature do
 
     visit "/themeparks/#{epcot.id}/rides"
 
+    expect(page).to have_content(epcot.rides.count)
     expect(page).to have_content(ride_1.name)
     expect(page).to have_content(ride_1.max_occupants)
     expect(page).to have_content("Operational")
@@ -21,6 +22,7 @@ RSpec.describe 'Rides of ThemePark', type: :feature do
     
     visit "/themeparks/#{magic_kingdom.id}/rides"
     
+    expect(page).to have_content(magic_kingdom.rides.count)
     expect(page).to have_content(ride_3.name)
     expect(page).to have_content(ride_3.max_occupants)
     expect(page).to have_content("Operational")
