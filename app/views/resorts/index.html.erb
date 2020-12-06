@@ -1,5 +1,9 @@
 <h1>Resorts!</h1>
-
+<%= form_tag("/resorts", method: :get) do %>
+  <%= label_tag :number_of_rooms %>
+  <%= text_field_tag :number_of_rooms %>
+  <%= submit_tag 'Only show resorts with more than ____ rooms'%>
+<% end %>
 <ul>
   <% @ordered_resorts.each do |resort| %>
       <li><%= resort.name %>(Created at: <%= resort.created_at %>)</li>

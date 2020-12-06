@@ -1,8 +1,11 @@
 class ResortsController < ApplicationController
 
   def index
-    @resorts = Resort.all
-    @ordered_resorts = @resorts.order("created_at").reverse_order
+      if params[:number_of_rooms]
+        @ordered_resorts = Resort.where("amount_of_rooms > ?", params[:number_of_rooms])
+      else
+        @ordered_resorts = Resort.all
+      end
   end
 
   def show
