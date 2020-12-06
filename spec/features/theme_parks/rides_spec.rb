@@ -26,4 +26,31 @@ RSpec.describe 'Rides of ThemePark', type: :feature do
     expect(page).to have_content("Operational")
     expect(page).to have_link("New Ride", href: "/themeparks/#{magic_kingdom.id}/rides/new")
   end
+
+   it 'can create new rides' do
+    epcot = ThemePark.create(name: 'Epcot', city: 'Orlando', open: false)
+    magic_kingdom = ThemePark.create(name: 'Magic Kingdom', city: 'Orlando', open: true)
+
+    visit "/themeparks/#{epcot.id}/rides"
+    expect(page).to have_link("New Ride", href: "/themeparks/#{epcot.id}/rides/new")
+    click_link "New Ride"
+    fill_in 'Name', with: 'New Ride'
+    fill_in 'Max occupants', with: '1000'
+    select 'true', from: 'Operational'
+    click_button "Create Ride"
+    expect(page).to have_content("New Ride")
+    expect(page).to have_content("1000")
+    expect(page).to have_content("Operational")
+
+    visit "/themeparks/#{magic_kingdom.id}/rides"
+    expect(page).to have_link("New Ride", href: "/themeparks/#{magic_kingdom.id}/rides/new")
+    click_link "New Ride"
+    fill_in 'Name', with: 'Ride Newer'
+    fill_in 'Max occupants', with: '750'
+    select 'false', from: 'Operational'
+    click_button "Create Ride"
+    expect(page).to have_content("Ride Newer")
+    expect(page).to have_content("750")
+    expect(page).to have_content("Not Operational")
+  end
 end
