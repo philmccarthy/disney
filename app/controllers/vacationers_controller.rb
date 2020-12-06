@@ -1,7 +1,6 @@
 class VacationersController < ApplicationController
   def index
-    @vacationers = Vacationer.all
-    @ordered_vacationers = @vacationers.order("created_at").reverse_order
+    @ordered_vacationers = Vacationers.order(created_at: :desc)
   end
 
   def show
