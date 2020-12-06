@@ -4,6 +4,9 @@
   <% @ordered_vacationers.each do |vacationer| %>
     <h3><%= vacationer.first_name %> <%= vacationer.last_name %> </h3>
     <li>Checked in: <%= vacationer.checked_in %></li>
-    <li>Created at: <%= vacationer.created_at %></li>
+    <li><%= vacationer.created_at
+                        .in_time_zone("America/Denver")
+                        .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
+      </li>
     <% end %>
   </ul>
