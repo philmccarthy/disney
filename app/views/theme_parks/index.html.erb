@@ -2,7 +2,11 @@
 
 <ul>
   <% @theme_parks.each do |theme_park| %>
-      <li><%= theme_park.name %></li>
+      <h3><%= theme_park.name %></h3>
+      <li><%= theme_park.created_at
+                        .in_time_zone("America/Denver")
+                        .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
+      </li>
     <% end %>
 </ul>
 <a href="/themeparks/new">New Theme Park</a>

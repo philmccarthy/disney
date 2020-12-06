@@ -1,6 +1,6 @@
 class ThemeParksController < ApplicationController
   def index
-    @theme_parks = ThemePark.all
+    @theme_parks = ThemePark.order(created_at: :desc)
   end
 
   def show
