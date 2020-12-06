@@ -53,4 +53,20 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
     expect(page).to have_content("last_name")
     expect(page).to have_content("Checked in: true")
   end
+
+  it 'can sort vacationers alphabetically' do
+    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+
+    vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
+    vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
+    vacationer_3 = resort_1.vacationers.create!(first_name: "Sam", last_name: "Jones", checked_in: false)
+
+    visit "/resorts/#{resort_1.id}/vacationers"
+    expect(page).to have_button('Alphebetize')
+    click_button 'Alphebetize'
+    expect(page).to have_content(vacationer_1.first_name)
+    expect(page).to have_content(vacationer_2.first_name)
+    expect(page).to have_content(vacationer_3.first_name)
+  end
+
 end
