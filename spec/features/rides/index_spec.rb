@@ -11,19 +11,20 @@ RSpec.describe 'Rides Index', type: :feature do
     ride_3 = magic_kingdom.rides.create!(name: "Space Mountain", max_occupants: 65, operational: true)
 
     visit '/rides'
-
     expect(page).to have_content(ride_1.name)
     expect(page).to have_content(ride_1.max_occupants)
     expect(page).to have_content("Operational")
+    expect(page).to have_content(ride_1.created_at.in_time_zone("America/Denver").strftime("Created on %m/%d/%Y at %I:%M%p %Z"))
+
 
     expect(page).to have_content(ride_2.name)
     expect(page).to have_content(ride_2.max_occupants)
     expect(page).to have_content("Not Operational")
+    expect(page).to have_content(ride_2.created_at.in_time_zone("America/Denver").strftime("Created on %m/%d/%Y at %I:%M%p %Z"))
 
     expect(page).to have_content(ride_3.name)
     expect(page).to have_content(ride_3.max_occupants)
     expect(page).to have_content("Operational")
-    
-
+    expect(page).to have_content(ride_3.created_at.in_time_zone("America/Denver").strftime("Created on %m/%d/%Y at %I:%M%p %Z"))
   end
 end

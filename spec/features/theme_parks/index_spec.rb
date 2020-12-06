@@ -8,7 +8,10 @@ RSpec.describe 'ThemeParks Index Page', type: :feature do
     visit '/themeparks'
 
     expect(page).to have_content(tp_1.name)
+    expect(page).to have_content(tp_1.created_at.in_time_zone("America/Denver").strftime("Created on %m/%d/%Y at %I:%M%p %Z"))
+
     expect(page).to have_content(tp_2.name)
+    expect(page).to have_content(tp_2.created_at.in_time_zone("America/Denver").strftime("Created on %m/%d/%Y at %I:%M%p %Z"))
     expect(page).to have_link("New Theme Park", href: '/themeparks/new')
   end
 end
