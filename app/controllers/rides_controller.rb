@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
   def index
-    @rides = Ride.all
+    @rides = Ride.order(created_at: :desc)
   end
 
   def show
