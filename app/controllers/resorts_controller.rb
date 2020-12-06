@@ -1,8 +1,15 @@
 class ResortsController < ApplicationController
 
   def index
-    @resorts = Resort.all
-    @ordered_resorts = @resorts.order("created_at").reverse_order
+      if params[:number_of_rooms]
+        @ordered_resorts = Resort.where("amount_of_rooms > ?", params[:number_of_rooms])
+      elsif params[:commit]
+        @ordered_resorts = Resort.all.sort_by do |resort|
+          resort.vacationers.count
+        end.reverse
+      else
+        @ordered_resorts = Resort.order(vacancy: :desc, created_at: :desc)
+      end
   end
 
   def show
@@ -44,6 +51,11 @@ class ResortsController < ApplicationController
 
   def vacationers
     @resort = Resort.find(params[:id])
+    if params[:commit]
+      @vacationers = @resort.vacationers.order(:first_name)
+    else
+      @vacationers = @resort.vacationers
+    end
   end
 
   def new_vacationer
