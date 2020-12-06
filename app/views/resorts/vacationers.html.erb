@@ -1,6 +1,10 @@
 <h1>Vacationers at <%= @resort.name %> </h1>
 <h2>Total vacationers: <%= @resort.vacationers.count %></h2>
-<% @resort.vacationers.each do |vacationer| %>
+<%= form_tag("/resorts/#{@resort.id}/vacationers", method: :get) do %>
+  <%= submit_tag 'Alphebetize', vacationers: :sort %>
+  <% end %>
+
+<% @vacationers.each do |vacationer| %>
   <h3><%= vacationer.first_name %> <%= vacationer.last_name %></h3>
   <p>Checked in: <%= vacationer.checked_in %></p>
   <% end %>
