@@ -6,7 +6,11 @@
 <% end %>
 <ul>
   <% @ordered_resorts.each do |resort| %>
-      <li><%= resort.name %>(Created at: <%= resort.created_at %>)</li>
+      <h3><%= resort.name %></h3>
+      <li><%= resort.created_at
+                        .in_time_zone("America/Denver")
+                        .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
+      </li>
     <% end %>
 </ul>
 <a href="/resorts/new/">New Resort</a>

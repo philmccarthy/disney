@@ -4,7 +4,7 @@ class ResortsController < ApplicationController
       if params[:number_of_rooms]
         @ordered_resorts = Resort.where("amount_of_rooms > ?", params[:number_of_rooms])
       else
-        @ordered_resorts = Resort.all
+        @ordered_resorts = Resort.order(vacancy: :desc, created_at: :desc)
       end
   end
 
