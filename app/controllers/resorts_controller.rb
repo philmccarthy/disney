@@ -3,6 +3,10 @@ class ResortsController < ApplicationController
   def index
       if params[:number_of_rooms]
         @ordered_resorts = Resort.where("amount_of_rooms > ?", params[:number_of_rooms])
+      elsif params[:commit]
+        @ordered_resorts = Resort.all.sort_by do |resort|
+          resort.vacationers.count
+        end.reverse
       else
         @ordered_resorts = Resort.order(vacancy: :desc, created_at: :desc)
       end
