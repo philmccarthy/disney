@@ -1,6 +1,12 @@
 class ThemeParksController < ApplicationController
   def index
-    @theme_parks = ThemePark.order(created_at: :desc)
+    if params[:sort]
+      @theme_parks = ThemePark.all.sort_by do |theme_park|
+        theme_park.rides.count
+      end.reverse
+    else
+      @theme_parks = ThemePark.order(created_at: :desc)
+    end
   end
 
   def show
