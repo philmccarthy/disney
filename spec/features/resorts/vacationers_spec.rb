@@ -18,6 +18,8 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
     expect(page).to have_content(vacationer_2.first_name)
     expect(page).to have_content(vacationer_2.last_name)
     expect(page).to have_content(vacationer_2.checked_in)
+    expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_1.id}/edit")
+    expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_2.id}/edit")
   end
 
   it 'can create new vacationers' do
