@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
   def index
-    if params[:occupants_threshold] && params[:occupants_threshold] != ""
+    if params[:occupants_threshold]
       @rides = Ride.all
                    .min_occupants(params[:occupants_threshold])
                    .order(operational: :desc, created_at: :desc)
@@ -24,7 +24,6 @@ class RidesController < ApplicationController
       max_occupants: params[:max_occupants],
       operational: params[:operational]
       })
-    ride.save
     redirect_to "/rides/#{ride.id}"
   end
 
