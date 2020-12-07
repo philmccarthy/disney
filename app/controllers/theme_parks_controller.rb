@@ -1,11 +1,12 @@
 class ThemeParksController < ApplicationController
   def index
     if params[:sort]
-      @theme_parks = ThemePark.all.sort_by do |theme_park|
-        theme_park.rides.count
-      end.reverse
+      @theme_parks = ThemePark.select("theme_parks.*, count(rides) as ride_count")
+                              .joins(:rides)
+                              .group(:id)
+                              .order("ride_count DESC")
     else
-      @theme_parks = ThemePark.order(created_at: :desc)
+      @theme_parks = ThemePark.order(open: :desc, created_at: :desc)
     end
   end
 
@@ -17,12 +18,11 @@ class ThemeParksController < ApplicationController
   end
 
   def create
-    theme_park = ThemePark.new({
+    theme_park = ThemePark.create!({
             name: params[:name],
             city: params[:city],
             open: params[:open]
           })
-        theme_park.save
         redirect_to '/themeparks'
   end
 
