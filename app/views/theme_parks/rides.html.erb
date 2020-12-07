@@ -1,5 +1,5 @@
 <h1>Rides at <%= @theme_park.name %></h1>
-<p>Number of Rides: <%= @theme_park.rides.count %>
+<h3>Number of Rides: <%= @theme_park.rides.count %></h3>
 <% @theme_park.rides.order(operational: :desc).each do |ride| %>
   <h3><%= ride.name %></h3>
   <li>Max Occupants: <%= ride.max_occupants %></li>
@@ -9,4 +9,5 @@
         <li>Not Operational</li>
       <% end %>
 <% end %>
-<a href="/themeparks/<%= @theme_park.id %>/rides/new">New Ride</a>
+
+<p><a href="/themeparks/<%= @theme_park.id %>/rides/new">New Ride</a></p>
