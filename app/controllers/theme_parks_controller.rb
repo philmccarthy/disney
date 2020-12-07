@@ -4,7 +4,7 @@ class ThemeParksController < ApplicationController
       @theme_parks = ThemePark.select("theme_parks.*, count(rides) as ride_count")
                               .joins(:rides)
                               .group(:id)
-                              .order("ride_count DESC")
+                              .order("ride_count DESC, open DESC, created_at DESC")
     else
       @theme_parks = ThemePark.order(open: :desc, created_at: :desc)
     end
@@ -48,6 +48,11 @@ class ThemeParksController < ApplicationController
 
   def rides
     @theme_park = ThemePark.find(params[:id])
+    if params[:commit]
+      @rides = @theme_park.rides.order(:name)
+    else
+      @rides = @theme_park.rides.order(operational: :desc)
+    end
   end
 
   def new_ride
