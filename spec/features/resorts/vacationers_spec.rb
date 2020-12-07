@@ -20,6 +20,9 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
     expect(page).to have_content(vacationer_2.checked_in)
     expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_1.id}/edit")
     expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_2.id}/edit")
+    expect(page).to have_button("Delete Vacationer")
+    first(:button, "Delete Vacationer").click
+    expect(page).to have_no_content(vacationer_1.first_name)
   end
 
   it 'can create new vacationers' do
