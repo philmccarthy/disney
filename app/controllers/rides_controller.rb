@@ -1,7 +1,9 @@
 class RidesController < ApplicationController
   def index
     if params[:occupants_threshold] && params[:occupants_threshold] != ""
-      @rides = Ride.all.min_occupants(params[:occupants_threshold])
+      @rides = Ride.all
+                   .min_occupants(params[:occupants_threshold])
+                   .order(operational: :desc, created_at: :desc)
     else
       @rides = Ride.order(operational: :desc, created_at: :desc)
     end
