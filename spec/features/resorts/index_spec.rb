@@ -12,6 +12,9 @@ RSpec.describe 'Resorts Index Page', type: :feature do
     expect(page).to have_link("New Resort", href: '/resorts/new/')
     expect(page).to have_link("Edit", href: "/resorts/#{resort_1.id}/edit")
     expect(page).to have_link("Edit", href: "/resorts/#{resort_2.id}/edit")
+    expect(page).to have_button("Delete Resort")
+    first(:button, "Delete Resort").click
+    expect(page).to have_no_content(resort_1.name)
   end
 
   it 'can sort by number of rooms' do
