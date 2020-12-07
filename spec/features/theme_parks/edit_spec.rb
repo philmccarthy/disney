@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'ThemeParks Edit Page', type: :feature do
 
   it 'has editing fields' do
-    tp_1 = ThemePark.create(name: 'Magic Kingdom', city: 'Orlando', open: true)
-    tp_2 = ThemePark.create(name: 'Epcot', city: 'Orlando', open: false)
+    tp_1 = create(:theme_park, open: true)
+    tp_2 = create(:theme_park, open: false)
 
     visit "/themeparks/#{tp_1.id}/edit"
     expect(page).to have_field("Name")

@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Ride Show Page', type: :feature do
 
   it 'shows individual ride details' do
-    epcot = ThemePark.create(name: 'Epcot', city: 'Orlando', open: false)
-    ride_1 = epcot.rides.create!(name: "Mission: SPACE", max_occupants: 70, operational: true)
-    ride_2 = epcot.rides.create!(name: "Test Track", max_occupants: 40, operational: false)
+    ride_1 = create(:ride, operational: true)
+    ride_2 = create(:ride, operational: false)
 
     visit "/rides/#{ride_1.id}"
 
@@ -25,12 +24,12 @@ RSpec.describe 'Ride Show Page', type: :feature do
   end
 
   it 'deletes vacationers' do
-    epcot = ThemePark.create(name: 'Epcot', city: 'Orlando', open: false)
-    ride_1 = epcot.rides.create!(name: "Mission: SPACE", max_occupants: 70, operational: true)
+    ride_1 = create(:ride, operational: true)
 
     visit "/rides/#{ride_1.id}"
+    expect(page).to have_content(ride_1.name)
 
     click_button "Delete Ride"
-    expect(page).to have_no_content("Mission: SPACE")
+    expect(page).not_to have_content(ride_1.name)
   end
 end
