@@ -7,5 +7,7 @@
 <% @vacationers.each do |vacationer| %>
   <h3><%= vacationer.first_name %> <%= vacationer.last_name %></h3>
   <p>Checked in: <%= vacationer.checked_in %></p>
+  <p><%= link_to 'Edit', "/vacationers/#{vacationer.id}/edit" %></p>
   <% end %>
+  <br>
 <a href="/resorts/<%= @resort.id %>/vacationers/new">New Vacationer</a>
