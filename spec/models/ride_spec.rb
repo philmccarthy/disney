@@ -6,7 +6,7 @@ RSpec.describe Ride, type: :model do
   end
 
   describe 'class methods' do
-    describe '.min_occupants' do
+    describe '::min_occupants' do
       it 'returns rides with max occupants above argument' do
         disneyland = ThemePark.create!(name: 'Disneyland', city: 'Los Angeles', open: true)
         ride_1 = disneyland.rides.create!(name: 'Ride 1', max_occupants: 75, operational: true)
