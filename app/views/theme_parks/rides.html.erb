@@ -1,6 +1,9 @@
 <h1>Rides at <%= @theme_park.name %></h1>
 <h3>Number of Rides: <%= @theme_park.rides.count %></h3>
-<% @theme_park.rides.order(operational: :desc).each do |ride| %>
+<%= form_tag "/themeparks/#{@theme_park.id}/rides", method: :get do %>
+  <%= submit_tag 'Alphabetize', rides: :sort %>
+<% end %>
+<% @rides.each do |ride| %>
   <h3><%= ride.name %></h3>
   <li>Max Occupants: <%= ride.max_occupants %></li>
       <% if ride.operational %>
