@@ -19,16 +19,17 @@ class RidesController < ApplicationController
 
   def update
     ride = Ride.find(params[:id])
-    ride.update({
-      name: params[:name],
-      max_occupants: params[:max_occupants],
-      operational: params[:operational]
-      })
+    ride.update(ride_params)
     redirect_to "/rides/#{ride.id}"
   end
 
   def destroy
     Ride.destroy(params[:id])
     redirect_to '/rides'
+  end
+
+  private
+  def ride_params
+    params.permit(:name, :max_occupants, :operational)
   end
 end
