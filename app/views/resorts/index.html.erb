@@ -21,6 +21,10 @@
           <% end %>
             </li>
       <li><%= link_to 'Edit', "/resorts/#{resort.id}/edit" %></li>
+          <%= form_tag("/resorts/#{resort.id}", method: :delete) do %>
+            <%= submit_tag 'Delete Resort' %>
+          <% end %>
+
             <br>
     <% end %>
 
