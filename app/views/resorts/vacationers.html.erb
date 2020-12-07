@@ -8,6 +8,9 @@
   <h3><%= vacationer.first_name %> <%= vacationer.last_name %></h3>
   <p>Checked in: <%= vacationer.checked_in %></p>
   <p><%= link_to 'Edit', "/vacationers/#{vacationer.id}/edit" %></p>
+  <%= form_tag("/vacationers/#{vacationer.id}", method: :delete) do %>
+    <%= submit_tag 'Delete Vacationer' %>
+  <% end %>
   <% end %>
   <br>
 <a href="/resorts/<%= @resort.id %>/vacationers/new">New Vacationer</a>
