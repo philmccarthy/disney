@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Rides Edit Page', type: :feature do
   it 'edits ride' do
-    epcot = ThemePark.create(name: 'Magic Kingdom', city: 'Orlando', open: true)
-    ride_1 = epcot.rides.create!(name: "Mission: SPACE", max_occupants: 70, operational: true)
+    epcot = create(:theme_park)
+    ride_1 = create(:ride, operational: true, theme_park: epcot)
     
     visit "/rides/#{ride_1.id}"
 
