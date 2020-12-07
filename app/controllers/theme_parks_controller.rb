@@ -1,6 +1,13 @@
 class ThemeParksController < ApplicationController
   def index
-    @theme_parks = ThemePark.order(created_at: :desc)
+    if params[:sort]
+      @theme_parks = ThemePark.select("theme_parks.*, count(rides) as ride_count")
+                              .joins(:rides)
+                              .group(:id)
+                              .order("ride_count DESC, open DESC, created_at DESC")
+    else
+      @theme_parks = ThemePark.order(open: :desc, created_at: :desc)
+    end
   end
 
   def show
@@ -11,12 +18,11 @@ class ThemeParksController < ApplicationController
   end
 
   def create
-    theme_park = ThemePark.new({
+    theme_park = ThemePark.create!({
             name: params[:name],
             city: params[:city],
             open: params[:open]
           })
-        theme_park.save
         redirect_to '/themeparks'
   end
 
@@ -42,6 +48,11 @@ class ThemeParksController < ApplicationController
 
   def rides
     @theme_park = ThemePark.find(params[:id])
+    if params[:commit]
+      @rides = @theme_park.rides.order(:name)
+    else
+      @rides = @theme_park.rides.order(operational: :desc)
+    end
   end
 
   def new_ride

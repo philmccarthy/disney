@@ -1,4 +1,10 @@
 <h1>All Disney Rides</h1>
+
+<%= form_tag '/rides', method: :get do %>
+  <%= label_tag :occupants_threshold, "Results with max occupants greater than:" %>
+  <%= number_field_tag :occupants_threshold %><br>
+  <%= submit_tag 'Go' %>
+<% end %>
 <ul>
  <% @rides.each do |ride| %>
     <h3><%= ride.name %></h3>
