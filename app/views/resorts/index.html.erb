@@ -20,6 +20,9 @@
           Vacationers: <%= resort.vacationers.count %>
           <% end %>
             </li>
+      <li><%= link_to 'Edit', "/resorts/#{resort.id}/edit" %></li>
+            <br>
     <% end %>
+
 </ul>
 <a href="/resorts/new/">New Resort</a>
