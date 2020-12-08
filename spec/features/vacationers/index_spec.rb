@@ -48,7 +48,7 @@ RSpec.describe 'Vacationer Index', type: :feature do
     vacationer_1 = create(:vacationer)
     vacationer_2 = create(:vacationer)
     vacationer_3 = create(:vacationer)
-    
+
     visit '/vacationers'
 
     expect(page).to have_link("#{vacationer_1.first_name}", href: "/vacationers/#{vacationer_1.id}")

@@ -21,6 +21,7 @@ FactoryBot.define do
   factory :vacationer do
     sequence(:first_name) { |n| "First #{n}" }
     sequence(:last_name) { |n| "Last #{n}" }
+    checked_in { [true, false].sample}
     resort
   end
 end
