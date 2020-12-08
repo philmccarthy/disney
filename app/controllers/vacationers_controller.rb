@@ -26,4 +26,5 @@ class VacationersController < ApplicationController
     Vacationer.destroy(params[:id])
     redirect_to '/vacationers'
   end
+
 end
