@@ -4,9 +4,10 @@ class ResortsController < ApplicationController
       if params[:number_of_rooms]
         @ordered_resorts = Resort.where("amount_of_rooms > ?", params[:number_of_rooms])
       elsif params[:commit]
-        @ordered_resorts = Resort.all.sort_by do |resort|
-          resort.vacationers.count
-        end.reverse
+        @ordered_resorts = Resort.select("resorts.*, count(vacationers) as vacationers_count")
+                                .joins(:vacationers)
+                                .group(:id)
+                                .order("vacationers_count DESC, vacancy DESC, created_at DESC")
       else
         @ordered_resorts = Resort.order(vacancy: :desc, created_at: :desc)
       end
@@ -20,12 +21,7 @@ class ResortsController < ApplicationController
   end
 
   def create
-    resort = Resort.new({
-            name: params[:name],
-            amount_of_rooms: params[:amount_of_rooms],
-            vacancy: params[:vacancy]
-          })
-        resort.save
+    resort = Resort.create!(resort_params)
         redirect_to '/resorts'
   end
 
@@ -62,14 +58,10 @@ class ResortsController < ApplicationController
     @resort = Resort.find(params[:id])
   end
 
-  def create_vacationer
-    @resort = Resort.find(params[:id])
-    @resort.vacationers.create!({
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      checked_in: params[:checked_in]
-    })
-    redirect_to "/resorts/#{@resort.id}/vacationers"
+  private
+
+  def resort_params
+    params.permit(:name, :amount_of_rooms, :vacancy)
   end
 
 end
