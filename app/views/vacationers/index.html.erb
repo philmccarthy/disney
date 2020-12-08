@@ -8,5 +8,6 @@
                         .in_time_zone("America/Denver")
                         .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
       </li>
+      <p><%= link_to 'Edit', "/vacationers/#{vacationer.id}/edit" %></p>
     <% end %>
   </ul>
