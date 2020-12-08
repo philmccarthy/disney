@@ -11,7 +11,7 @@
 
 <ul>
   <% @ordered_resorts.each do |resort| %>
-      <h3><%= resort.name %></h3>
+      <h3><%= link_to "#{resort.name}", "/resorts/#{resort.id}" %></h3>
       <li><%= resort.created_at
                         .in_time_zone("America/Denver")
                         .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
