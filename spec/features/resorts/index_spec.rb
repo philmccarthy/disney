@@ -46,7 +46,6 @@ RSpec.describe 'Resorts Index Page', type: :feature do
 
   it 'can delete resorts' do
     resort_1 = create(:resort)
-    resort_2 = create(:resort)
 
     visit '/resorts'
     expect(page).to have_button("Delete Resort")
@@ -57,7 +56,7 @@ RSpec.describe 'Resorts Index Page', type: :feature do
   it 'links to resort show' do
     resort_1 = create(:resort)
     resort_2 = create(:resort)
-    
+
     visit '/resorts'
     expect(page).to have_link("#{resort_1.name}", href: "/resorts/#{resort_1.id}")
   end
