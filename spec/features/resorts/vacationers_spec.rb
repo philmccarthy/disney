@@ -106,4 +106,16 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
 
   end
 
+  it 'has links to vacationers show pages' do
+      resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+
+      vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
+      vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
+
+      visit "/resorts/#{resort_1.id}/vacationers"
+
+      expect(page).to have_link("#{vacationer_1.first_name}", href: "/vacationers/#{vacationer_1.id}")
+      expect(page).to have_link("#{vacationer_2.first_name}", href: "/vacationers/#{vacationer_2.id}")
+  end
+
 end
