@@ -24,6 +24,8 @@ RSpec.describe 'Vacationer Index', type: :feature do
     expect(page).to have_content(vacationer_3.last_name)
     expect(page).to have_content(vacationer_3.checked_in)
 
-
+    expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_1.id}/edit")
+    expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_2.id}/edit")
+    expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_2.id}/edit")
   end
 end
