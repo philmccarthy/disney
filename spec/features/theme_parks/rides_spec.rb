@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Rides of ThemePark', type: :feature do
   it 'can list rides that belong to a specific theme park' do
-    # epcot = create(:theme_park, open: false)
-    # magic_kingdom = create(:theme_park, open: true)
     theme_park = create(:theme_park)
     rides = create_list(:ride, 10, theme_park: theme_park)
 
