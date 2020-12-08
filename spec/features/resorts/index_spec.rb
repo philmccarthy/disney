@@ -9,12 +9,6 @@ RSpec.describe 'Resorts Index Page', type: :feature do
 
     expect(page).to have_content(resort_1.name)
     expect(page).to have_content(resort_2.name)
-    expect(page).to have_link("New Resort", href: '/resorts/new/')
-    expect(page).to have_link("Edit", href: "/resorts/#{resort_1.id}/edit")
-    expect(page).to have_link("Edit", href: "/resorts/#{resort_2.id}/edit")
-    expect(page).to have_button("Delete Resort")
-    first(:button, "Delete Resort").click
-    expect(page).to have_no_content(resort_1.name)
   end
 
   it 'can sort by number of rooms' do
@@ -40,6 +34,33 @@ RSpec.describe 'Resorts Index Page', type: :feature do
     click_button 'Sort by number of vacationers'
     expect(page).to have_content("Vacationers: #{resort_2.vacationers.count}")
     expect(page).to have_content("Vacationers: #{resort_1.vacationers.count}")
+  end
+
+  it 'can has link to edit resorts' do
+    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+    resort_2 = Resort.create(name: 'Seaside Shack', amount_of_rooms: 450, vacancy: false)
+
+    visit '/resorts'
+    expect(page).to have_link("Edit", href: "/resorts/#{resort_1.id}/edit")
+    expect(page).to have_link("Edit", href: "/resorts/#{resort_2.id}/edit")
+  end
+
+  it 'can delete resorts' do
+    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+    resort_2 = Resort.create(name: 'Seaside Shack', amount_of_rooms: 450, vacancy: false)
+
+    visit '/resorts'
+    expect(page).to have_button("Delete Resort")
+    first(:button, "Delete Resort").click
+    expect(page).to have_no_content(resort_1.name)
+  end
+
+  it 'links to resort show' do
+    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+    resort_2 = Resort.create(name: 'Seaside Shack', amount_of_rooms: 450, vacancy: false)
+
+    visit '/resorts'
+    expect(page).to have_link("#{resort_1.name}", href: "/resorts/#{resort_1.id}")
   end
 
 end
