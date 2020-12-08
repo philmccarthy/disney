@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
   def index
-    if params[:occupants_threshold] && params[:occupants_threshold] != ""
+    if params[:occupants_threshold]
       @rides = Ride.all
                    .min_occupants(params[:occupants_threshold])
                    .order(operational: :desc, created_at: :desc)
@@ -19,17 +19,17 @@ class RidesController < ApplicationController
 
   def update
     ride = Ride.find(params[:id])
-    ride.update({
-      name: params[:name],
-      max_occupants: params[:max_occupants],
-      operational: params[:operational]
-      })
-    ride.save
+    ride.update(ride_params)
     redirect_to "/rides/#{ride.id}"
   end
 
   def destroy
     Ride.destroy(params[:id])
     redirect_to '/rides'
+  end
+
+  private
+  def ride_params
+    params.permit(:name, :max_occupants, :operational)
   end
 end

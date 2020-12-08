@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+body {
+  font-family: Arial, Helvetica, sans-serif
+}
+
+ nav {
+  text-align: center;
+  border-bottom: 1px solid lightgrey;
+  overflow: hidden;
+  background-color: #113CCF;
+  list-style-type: none;
+}
+ 
+nav li {
+  display: inline;
+
+}
+
+nav li a {
+  font-size: 1.25em;
+  padding: 1% 5%;
+  color: white;
+  text-decoration: none;
+  display: inline-block
+}
+
+nav li a:hover {
+  color: #F8E467
+}

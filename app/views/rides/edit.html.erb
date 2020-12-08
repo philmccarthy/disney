@@ -1,10 +1,11 @@
+<h1>Edit Ride: <%= @ride.name %></h1>
 <%= form_tag("/rides/#{@ride.id}", method: :patch) do %>
   <%= label_tag :name %>
-  <%= text_field_tag :name, @ride.name %>
+  <%= text_field_tag :name, @ride.name %></br></br>
   <%= label_tag :max_occupants %>
-  <%= text_field_tag :max_occupants, @ride.max_occupants %>
+  <%= text_field_tag :max_occupants, @ride.max_occupants %></br></br>
   <%= label_tag :operational %>
-  <%= select_tag :operational, options_for_select([true, false], @ride.operational) %>
+  <%= select_tag :operational, options_for_select([true, false], @ride.operational) %></br></br>
 
   <%= submit_tag 'Edit Ride' %>
 <% end %>

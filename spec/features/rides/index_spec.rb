@@ -5,10 +5,6 @@ RSpec.describe 'Rides Index', type: :feature do
   it 'shows all rides' do
     rides = create_list(:ride, 50)
 
-    # ride_1 = epcot.rides.create!(name: "Mission: SPACE", max_occupants: 70, operational: true)
-    # ride_2 = epcot.rides.create!(name: "Test Track", max_occupants: 40, operational: false)
-    # ride_3 = magic_kingdom.rides.create!(name: "Space Mountain", max_occupants: 65, operational: true)
-
     visit '/rides'
     expect(page).to have_field('Results with max occupants greater than:')
     expect(page).to have_content(rides.sample.name)

@@ -1,6 +1,6 @@
 class ThemeParksController < ApplicationController
   def index
-    if params[:sort]
+    if params[:sort] == "ride_count"
       @theme_parks = ThemePark.select("theme_parks.*, count(rides) as ride_count")
                               .joins(:rides)
                               .group(:id)
@@ -18,12 +18,8 @@ class ThemeParksController < ApplicationController
   end
 
   def create
-    theme_park = ThemePark.create!({
-            name: params[:name],
-            city: params[:city],
-            open: params[:open]
-          })
-        redirect_to '/themeparks'
+    theme_park = ThemePark.create!(theme_park_params)
+    redirect_to '/themeparks'
   end
 
   def edit
@@ -32,13 +28,8 @@ class ThemeParksController < ApplicationController
 
   def update
       theme_park = ThemePark.find(params[:id])
-      theme_park.update({
-            name: params[:name],
-            city: params[:city],
-            open: params[:open]
-          })
-        theme_park.save
-        redirect_to "/themeparks/#{theme_park.id}"
+      theme_park.update(theme_park_params)
+      redirect_to "/themeparks/#{theme_park.id}"
   end
 
   def destroy
@@ -61,11 +52,16 @@ class ThemeParksController < ApplicationController
   
   def create_ride
     @theme_park = ThemePark.find(params[:id])
-    @theme_park.rides.create!({
-      name: params[:name],
-      max_occupants: params[:max_occupants],
-      operational: params[:operational]
-      })
+    @theme_park.rides.create!(ride_params)
     redirect_to "/themeparks/#{@theme_park.id}/rides"
+  end
+
+  private
+  def theme_park_params
+    params.permit(:name, :city, :open)
+  end
+
+  def ride_params
+    params.permit(:name, :max_occupants, :operational)
   end
 end
