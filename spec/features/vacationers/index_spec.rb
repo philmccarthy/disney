@@ -27,5 +27,8 @@ RSpec.describe 'Vacationer Index', type: :feature do
     expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_1.id}/edit")
     expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_2.id}/edit")
     expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_2.id}/edit")
+    expect(page).to have_button("Delete Vacationer")
+    first(:button, "Delete Vacationer").click
+    expect(page).to have_no_content(vacationer_3.first_name)
   end
 end
