@@ -9,5 +9,9 @@
                         .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
       </li>
       <p><%= link_to 'Edit', "/vacationers/#{vacationer.id}/edit" %></p>
+      <%= form_tag("/vacationers/#{vacationer.id}", method: :delete) do %>
+        <%= submit_tag 'Delete Vacationer' %>
+      <% end %>
+      <br>
     <% end %>
   </ul>
