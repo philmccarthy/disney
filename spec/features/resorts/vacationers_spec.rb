@@ -2,12 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Vacationers in Resort', type: :feature do
   it 'can list vacationers that belong to a specific resort' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
-    resort_2 = Resort.create(name: 'Seaside Shack', amount_of_rooms: 450, vacancy: false)
+    resort_1 = create(:resort)
+    resort_2 = create(:resort)
 
     vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
     vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
-    vacationer_3 = resort_2.vacationers.create!(first_name: "Sam", last_name: "Jones", checked_in: false)
 
     visit "/resorts/#{resort_1.id}/vacationers"
 
@@ -21,8 +20,8 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
   end
 
   it 'can create new vacationers' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
-    resort_2 = Resort.create(name: 'Seaside Shack', amount_of_rooms: 450, vacancy: false)
+    resort_1 = create(:resort)
+    resort_2 = create(:resort)
 
     vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
     vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
@@ -55,7 +54,7 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
   end
 
   it 'can sort vacationers alphabetically' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+    resort_1 = create(:resort)
 
     vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
     vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
@@ -70,7 +69,7 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
   end
 
   it 'can delete vacationers' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+    resort_1 = create(:resort)
 
     vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
     vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
@@ -83,11 +82,10 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
   end
 
   it 'has link to edit vacationers' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+    resort_1 = create(:resort)
 
     vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
     vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
-    vacationer_3 = resort_1.vacationers.create!(first_name: "Sam", last_name: "Jones", checked_in: false)
 
     visit "/resorts/#{resort_1.id}/vacationers"
     expect(page).to have_link("Edit", href: "/vacationers/#{vacationer_1.id}/edit")
@@ -95,27 +93,22 @@ RSpec.describe 'Vacationers in Resort', type: :feature do
   end
 
   it 'has link to resort show page' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
-
-    vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
-    vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
-    vacationer_3 = resort_1.vacationers.create!(first_name: "Sam", last_name: "Jones", checked_in: false)
+    resort_1 = create(:resort)
 
     visit "/resorts/#{resort_1.id}/vacationers"
     expect(page).to have_link("#{resort_1.name}", href: "/resorts/#{resort_1.id}")
-
   end
 
   it 'has links to vacationers show pages' do
-      resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
+    resort_1 = create(:resort)
 
-      vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
-      vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
+    vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
+    vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
 
-      visit "/resorts/#{resort_1.id}/vacationers"
+    visit "/resorts/#{resort_1.id}/vacationers"
 
-      expect(page).to have_link("#{vacationer_1.first_name}", href: "/vacationers/#{vacationer_1.id}")
-      expect(page).to have_link("#{vacationer_2.first_name}", href: "/vacationers/#{vacationer_2.id}")
+    expect(page).to have_link("#{vacationer_1.first_name}", href: "/vacationers/#{vacationer_1.id}")
+    expect(page).to have_link("#{vacationer_2.first_name}", href: "/vacationers/#{vacationer_2.id}")
   end
 
 end

@@ -11,4 +11,16 @@ FactoryBot.define do
     operational { [true, false].sample }
     theme_park
   end
+
+  factory :resort do
+    sequence(:name) { |n| "Name #{n}" }
+    sequence(:amount_of_rooms) { |n| n + 50}
+    vacancy { [true, false].sample }
+  end
+
+  factory :vacationer do
+    sequence(:first_name) { |n| "First #{n}" }
+    sequence(:last_name) { |n| "Last #{n}" }
+    resort
+  end
 end

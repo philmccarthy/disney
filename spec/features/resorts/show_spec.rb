@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Resorts Show Page', type: :feature do
 
   it 'can see attributes of a resort' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
-    resort_2 = Resort.create(name: 'Seaside Shack', amount_of_rooms: 450, vacancy: false)
+    resort_1 = create(:resort, vacancy: true)
+    resort_2 = create(:resort, vacancy: false)
 
     visit "/resorts/#{resort_1.id}"
 
@@ -24,8 +24,8 @@ RSpec.describe 'Resorts Show Page', type: :feature do
   end
 
   it 'has link to resorts vacationers page' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
-
+    resort_1 = create(:resort)
+    
     vacationer_1 = resort_1.vacationers.create!(first_name: "Ruby", last_name: "Dog", checked_in: true)
     vacationer_2 = resort_1.vacationers.create!(first_name: "Tina", last_name: "Dog", checked_in: true)
 

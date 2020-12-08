@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Resorts Delete', type: :feature do
 
   it 'deletes resorts' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
-    resort_2 = Resort.create(name: 'Seaside Shack', amount_of_rooms: 450, vacancy: false)
-
+    resort_1 = create(:resort)
+    resort_2 = create(:resort)
+    
     visit "/resorts/#{resort_1.id}"
 
     expect(page).to have_content(resort_1.name)
