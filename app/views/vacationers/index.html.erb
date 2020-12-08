@@ -2,11 +2,17 @@
 
 <ul>
   <% @ordered_vacationers.each do |vacationer| %>
-    <h3><%= vacationer.first_name %> <%= vacationer.last_name %> </h3>
+    <h3><%= link_to "#{vacationer.first_name}", "/vacationers/#{vacationer.id}" %>
+      <%= vacationer.last_name %> </h3>
     <li>Checked in: <%= vacationer.checked_in %></li>
     <li><%= vacationer.created_at
                         .in_time_zone("America/Denver")
                         .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
       </li>
+      <p><%= link_to 'Edit', "/vacationers/#{vacationer.id}/edit" %></p>
+      <%= form_tag("/vacationers/#{vacationer.id}", method: :delete) do %>
+        <%= submit_tag 'Delete Vacationer' %>
+      <% end %>
+      <br>
     <% end %>
   </ul>

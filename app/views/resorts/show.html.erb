@@ -15,3 +15,4 @@
 <%= form_tag("/resorts/#{@resort.id}", method: :delete) do %>
   <%= submit_tag 'Delete Resort' %>
 <% end %>
+<%= link_to "Vacationers at #{@resort.name}", "/resorts/#{@resort.id}/vacationers" %>

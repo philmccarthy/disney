@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Resorts Edit', type: :feature do
 
   it 'has editing fields' do
-    resort_1 = Resort.create(name: 'Country Villas', amount_of_rooms: 230, vacancy: true)
-    resort_2 = Resort.create(name: 'Seaside Shack', amount_of_rooms: 450, vacancy: false)
-
+    resort_1 = create(:resort)
+    resort_2 = create(:resort)
+    
     visit "/resorts/#{resort_1.id}/edit"
 
     expect(page).to have_field("Name")
