@@ -5,7 +5,8 @@
   <% end %>
 
 <% @vacationers.each do |vacationer| %>
-  <h3><%= vacationer.first_name %> <%= vacationer.last_name %></h3>
+  <h3><%= link_to "#{vacationer.first_name}", "/vacationers/#{vacationer.id}" %>
+     <%= vacationer.last_name %></h3>
   <p>Checked in: <%= vacationer.checked_in %></p>
   <p><%= link_to 'Edit', "/vacationers/#{vacationer.id}/edit" %></p>
   <%= form_tag("/vacationers/#{vacationer.id}", method: :delete) do %>
