@@ -10,6 +10,14 @@
   </head>
 
   <body>
+  <nav>
+    <ul>
+      <li><%= link_to 'Theme Parks', '/themeparks', method: :get %></li>
+      <li><%= link_to 'Rides', '/rides', method: :get %></li>
+      <li><%= link_to 'Resorts', '/resorts', method: :get %></li>
+      <li><%= link_to 'Vacationers', '/vacationers', method: :get %></li>
+    </ul>
+  </nav>
     <%= yield %>
   </body>
 </html>
