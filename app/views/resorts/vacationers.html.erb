@@ -1,4 +1,4 @@
-<h1>Vacationers at <%= @resort.name %> </h1>
+<h1>Vacationers at <%= link_to "#{@resort.name}", "/resorts/#{@resort.id}" %> </h1>
 <h2>Total vacationers: <%= @resort.vacationers.count %></h2>
 <%= form_tag("/resorts/#{@resort.id}/vacationers", method: :get) do %>
   <%= submit_tag 'Alphebetize', vacationers: :sort %>
