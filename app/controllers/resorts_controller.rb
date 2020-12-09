@@ -10,9 +10,9 @@ class ResortsController < ApplicationController
                                 .group(:id)
                                 .order("vacationers_count DESC, vacancy DESC, created_at DESC")
       elsif params[:exact_match]
-        @ordered_resorts = Resort.exact_name_match(params[:exact_match])
+        @ordered_resorts = Resort.exact_match(params[:exact_match], "name")
       elsif params[:partial_match]
-        @ordered_resorts = Resort.partial_name_match(params[:partial_match])
+        @ordered_resorts = Resort.partial_match(params[:partial_match], "name")
       else
         @ordered_resorts = Resort.order(vacancy: :desc, created_at: :desc)
       end

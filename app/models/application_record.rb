@@ -1,11 +1,11 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  def self.exact_name_match(keyword)
-    where("name like ?", keyword)
+  def self.exact_match(keyword, column)
+    where("#{column} like ?", keyword)
   end
 
-  def self.partial_name_match(keyword)
-    where("name like ?", "%#{keyword}%")
+  def self.partial_match(keyword, column)
+    where("#{column} like ?", "%#{keyword}%")
   end
 end
