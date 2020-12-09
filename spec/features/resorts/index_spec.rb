@@ -72,5 +72,18 @@ RSpec.describe 'Resorts Index Page', type: :feature do
     expect(page).to have_no_content(resort_2.name)
   end
 
+  it "can search by partial keyword" do
+    resort_1 = create(:resort, name: "Resort")
+    resort_2 = create(:resort, name: "Other Resort")
+    resort_3 = create(:resort, name: "Different")
+
+    visit '/resorts'
+    fill_in 'Partial match', with: 'Resort'
+    click_button 'Partial match'
+    expect(page).to have_content(resort_1.name)
+    expect(page).to have_content(resort_2.name)
+    expect(page).to have_no_content(resort_3.name)
+  end
+
 
 end
