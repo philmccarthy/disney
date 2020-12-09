@@ -3,6 +3,7 @@ FactoryBot.define do
     sequence(:name) { |n| "Name #{n}" }
     city { "Orlando" }
     open { [true, false].sample }
+    sequence(:created_at) { |n| Time.current.advance(days: (n+1)) }
   end
 
   factory :ride do
