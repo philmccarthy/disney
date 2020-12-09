@@ -3,9 +3,9 @@ class ThemeParksController < ApplicationController
     if params[:sort]
       @theme_parks = ThemePark.sort_by_ride_count
     elsif params[:exact_match]
-      @theme_parks = ThemePark.where("name like ?", params[:exact_match])
+      @theme_parks = ThemePark.exact_match(params[:exact_match], "name")
     elsif params[:partial_match]
-      @theme_parks = ThemePark.where("name like ?", "%#{params[:partial_match]}%")
+      @theme_parks = ThemePark.partial_match(params[:partial_match], "name")
     else
       @theme_parks = ThemePark.default_order
     end

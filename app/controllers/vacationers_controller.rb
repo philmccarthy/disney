@@ -1,9 +1,9 @@
 class VacationersController < ApplicationController
   def index
     if params[:exact_match]
-      @ordered_vacationers = Vacationer.where("first_name like ?", params[:exact_match])
+      @ordered_vacationers = Vacationer.exact_match(params[:exact_match], "first_name")
     elsif params[:partial_match]
-      @ordered_vacationers = Vacationer.where("first_name like ?", "%#{params[:partial_match]}%")
+      @ordered_vacationers = Vacationer.partial_match(params[:partial_match], "first_name")
     else
       @ordered_vacationers = Vacationer.order(created_at: :desc)
     end

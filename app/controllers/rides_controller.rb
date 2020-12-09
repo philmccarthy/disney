@@ -5,9 +5,9 @@ class RidesController < ApplicationController
                    .min_occupants(params[:occupants_threshold])
                    .order(operational: :desc, created_at: :desc)
     elsif params[:exact_match]
-      @rides = Ride.where("name like ?", params[:exact_match])
+      @rides = Ride.exact_match(params[:exact_match], "name")
     elsif params[:partial_match]
-      @rides = Ride.where("name like ?", "%#{params[:partial_match]}%")
+      @rides = Ride.partial_match(params[:partial_match], "name")
     else
       @rides = Ride.order(operational: :desc, created_at: :desc)
     end
