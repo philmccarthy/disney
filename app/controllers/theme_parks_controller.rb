@@ -1,12 +1,9 @@
 class ThemeParksController < ApplicationController
   def index
     if params[:sort] == "ride_count"
-      @theme_parks = ThemePark.select("theme_parks.*, count(rides) as ride_count")
-                              .joins(:rides)
-                              .group(:id)
-                              .order("ride_count DESC, open DESC, created_at DESC")
+      @theme_parks = ThemePark.sort_by_ride_count
     else
-      @theme_parks = ThemePark.order(open: :desc, created_at: :desc)
+      @theme_parks = ThemePark.default_order
     end
   end
 

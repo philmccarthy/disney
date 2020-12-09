@@ -43,4 +43,14 @@ RSpec.describe 'Rides of ThemePark', type: :feature do
     expect(page).to have_content("750")
     expect(page).to have_content("Not Operational")
   end
+
+  it 'sorts rides alphabetically' do
+    epcot = create(:theme_park)
+    xyz = create(:ride, name: "xyz", theme_park: epcot)
+    abc = create(:ride, name: "abc", theme_park: epcot)
+    visit "/themeparks/#{epcot.id}/rides"
+    expect(xyz.name).to appear_before(abc.name)
+    click_button "Alphabetize"
+    expect(abc.name).to appear_before(xyz.name)
+  end
 end

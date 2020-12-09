@@ -3,7 +3,7 @@
 <h4><%= link_to 'Sort by Number of Rides', '?sort=ride_count' %></h4>
 <ul>
   <% @theme_parks.each do |theme_park| %>
-      <h3><%= theme_park.name %></h3>
+      <h3><%= link_to "#{theme_park.name}", "/themeparks/#{theme_park.id}", method: :get %></h3>
       
       <% if theme_park.open %>
         <li>Open</li>
@@ -18,6 +18,8 @@
       <% if params[:sort] %>
       <li>Number of Rides: <%= theme_park.rides.count %></li>
       <% end %>
+      <%= link_to 'Edit', "themeparks/#{theme_park.id}/edit", method: :get %>
+      <%= link_to 'Delete', "themeparks/#{theme_park.id}", method: :delete %>
     <% end %>
 </ul>
-<a href="/themeparks/new">New Theme Park</a>
+<%= link_to 'New Theme Park', '/themeparks/new', method: :get %>

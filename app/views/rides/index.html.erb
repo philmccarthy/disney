@@ -7,8 +7,8 @@
 <% end %>
 <ul>
  <% @rides.each do |ride| %>
-    <h3><%= ride.name %></h3>
-    <li>Theme Park: <%= ride.theme_park.name %></li>
+    <h3><%= link_to "#{ride.name}", "/rides/#{ride.id}", method: :get %></h3>
+    <li>Theme Park: <%= link_to "#{ride.theme_park.name}", "/themeparks/#{ride.theme_park.id}", method: :get %></li>
     <li>Max Occupants: <%= ride.max_occupants %></li>
     <li><% if ride.operational %>
       Operational
@@ -19,5 +19,7 @@
                 .in_time_zone("America/Denver")
                 .strftime("Created on %m/%d/%Y at %I:%M%p %Z") %>
     </li>
+    <%= link_to 'Edit', "/rides/#{ride.id}/edit", method: :get %>
+    <%= link_to 'Delete', "/rides/#{ride.id}", method: :delete %>
   <% end %>
 </ul>

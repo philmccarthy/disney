@@ -8,9 +8,10 @@
       <% else %>
            Closed
       <% end %>
+  <li><%= link_to 'Rides', "/themeparks/#{@theme_park.id}/rides", method: :get %></li>
   </li>     
 </ul>
-<a href="/themeparks/<%= @theme_park.id %>/edit">Edit</a>
+<%= link_to 'Edit', "/themeparks/#{@theme_park.id}/edit", method: :get %></br></br>
 <%= form_tag("/themeparks/#{@theme_park.id}", method: :delete) do %>
   <%= submit_tag 'Delete Theme Park' %>
 <% end %>
