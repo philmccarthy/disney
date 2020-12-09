@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   get '/themeparks/new', to: 'theme_parks#new'
   get '/themeparks/:id', to: 'theme_parks#show'
   get '/themeparks/:id/rides', to: 'theme_parks#rides'
-  get '/themeparks/:id/rides/new', to: 'theme_parks#new_ride'
-  post '/themeparks/:id/rides', to: 'theme_parks#create_ride'
   get '/themeparks/:id/edit', to: 'theme_parks#edit'
 
   delete '/rides/:id', to: 'rides#destroy'
@@ -37,5 +35,7 @@ Rails.application.routes.draw do
 
   get '/resorts/:id/vacationers/new', to: 'resorts_vacationers#new'
   post '/resorts/:id/vacationers', to: 'resorts_vacationers#create'
-
+  
+  get '/themeparks/:id/rides/new', to: 'theme_parks_rides#new'
+  post '/themeparks/:id/rides', to: 'theme_parks_rides#create'
 end
