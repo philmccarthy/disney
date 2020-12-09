@@ -11,6 +11,8 @@ class ResortsController < ApplicationController
                                 .order("vacationers_count DESC, vacancy DESC, created_at DESC")
       elsif params[:exact_match]
         @ordered_resorts = Resort.where("name like ?", params[:exact_match])
+      elsif params[:partial_match]
+        @ordered_resorts = Resort.where("name like ?", "%#{params[:partial_match]}%")
       else
         @ordered_resorts = Resort.order(vacancy: :desc, created_at: :desc)
       end
