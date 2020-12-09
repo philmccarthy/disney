@@ -2,7 +2,7 @@
 
 <%= form_tag '/rides', method: :get do %>
   <%= label_tag :occupants_threshold, "Results with max occupants greater than:" %>
-  <%= number_field_tag :occupants_threshold %><br>
+  <%= number_field_tag :occupants_threshold %> 
   <%= submit_tag 'Go' %>
 <% end %>
 <ul>

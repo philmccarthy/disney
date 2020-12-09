@@ -1,6 +1,6 @@
 <h1>Theme Parks!</h1>
 
-<h4><%= link_to 'Sort by Number of Rides', '?sort=ride_count' %></h4>
+<h4><%= link_to 'Sort by Number of Rides', '?sort=ride_count', method: :get %></h4>
 <ul>
   <% @theme_parks.each do |theme_park| %>
       <h3><%= link_to "#{theme_park.name}", "/themeparks/#{theme_park.id}", method: :get %></h3>
