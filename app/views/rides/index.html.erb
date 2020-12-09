@@ -2,9 +2,22 @@
 
 <%= form_tag '/rides', method: :get do %>
   <%= label_tag :occupants_threshold, "Results with max occupants greater than:" %>
-  <%= number_field_tag :occupants_threshold %> 
+  <%= number_field_tag :occupants_threshold %>
   <%= submit_tag 'Go' %>
 <% end %>
+<br>
+<%= form_tag("/rides", method: :get) do %>
+  <%= label_tag :exact_match %>
+  <%= text_field_tag :exact_match %>
+  <%= submit_tag 'Exact match'%>
+<% end %>
+<br>
+<%= form_tag("/rides", method: :get) do %>
+  <%= label_tag :partial_match %>
+  <%= text_field_tag :partial_match %>
+  <%= submit_tag 'Partial match'%>
+<% end %>
+<br>
 <ul>
  <% @rides.each do |ride| %>
     <h3><%= link_to "#{ride.name}", "/rides/#{ride.id}", method: :get %></h3>

@@ -1,6 +1,12 @@
 class VacationersController < ApplicationController
   def index
-    @ordered_vacationers = Vacationer.order(created_at: :desc)
+    if params[:exact_match]
+      @ordered_vacationers = Vacationer.exact_match(params[:exact_match], "first_name")
+    elsif params[:partial_match]
+      @ordered_vacationers = Vacationer.partial_match(params[:partial_match], "first_name")
+    else
+      @ordered_vacationers = Vacationer.order(created_at: :desc)
+    end
   end
 
   def show

@@ -1,5 +1,17 @@
 <h1>All Disney Vacationers</h1>
-
+<br>
+<%= form_tag("/vacationers", method: :get) do %>
+  <%= label_tag :exact_match %>
+  <%= text_field_tag :exact_match %>
+  <%= submit_tag 'Exact match'%>
+<% end %>
+<br>
+<%= form_tag("/vacationers", method: :get) do %>
+  <%= label_tag :partial_match %>
+  <%= text_field_tag :partial_match %>
+  <%= submit_tag 'Partial match'%>
+<% end %>
+<br>
 <ul>
   <% @ordered_vacationers.each do |vacationer| %>
     <h3><%= link_to "#{vacationer.first_name}", "/vacationers/#{vacationer.id}" %>

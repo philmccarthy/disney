@@ -55,4 +55,28 @@ RSpec.describe 'Vacationer Index', type: :feature do
     expect(page).to have_link("#{vacationer_2.first_name}", href: "/vacationers/#{vacationer_2.id}")
     expect(page).to have_link("#{vacationer_3.first_name}", href: "/vacationers/#{vacationer_3.id}")
   end
+
+  it "can search by keyword" do
+    vacationer_1 = create(:vacationer, first_name: "Vacationer")
+    vacationer_2 = create(:vacationer, first_name: "Other Vacationer")
+
+    visit '/vacationers'
+    fill_in 'Exact match', with: 'Vacationer'
+    click_button 'Exact match'
+    expect(page).to have_content(vacationer_1.first_name)
+    expect(page).to have_no_content(vacationer_2.first_name)
+  end
+
+  it "can search by partial keyword" do
+    vacationer_1 = create(:vacationer, first_name: "Vacationer")
+    vacationer_2 = create(:vacationer, first_name: "Other Vacationer")
+    vacationer_3 = create(:vacationer, first_name: "Different")
+
+    visit '/vacationers'
+    fill_in 'Partial match', with: 'Vacationer'
+    click_button 'Partial match'
+    expect(page).to have_content(vacationer_1.first_name)
+    expect(page).to have_content(vacationer_2.first_name)
+    expect(page).to have_no_content(vacationer_3.first_name)
+  end
 end

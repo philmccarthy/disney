@@ -6,8 +6,21 @@
 <% end %>
 <br>
 <%= form_tag("/resorts", method: :get) do %>
-  <%= submit_tag 'Sort by number of vacationers', vacationers: :sort %>
+  <%= submit_tag 'Sort by number of vacationers' %>
   <% end %>
+<br>
+<%= form_tag("/resorts", method: :get) do %>
+  <%= label_tag :exact_match %>
+  <%= text_field_tag :exact_match %>
+  <%= submit_tag 'Exact match'%>
+<% end %>
+<br>
+<%= form_tag("/resorts", method: :get) do %>
+  <%= label_tag :partial_match %>
+  <%= text_field_tag :partial_match %>
+  <%= submit_tag 'Partial match'%>
+<% end %>
+<br>
 
 <ul>
   <% @ordered_resorts.each do |resort| %>
