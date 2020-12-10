@@ -20,8 +20,8 @@ FactoryBot.define do
   end
 
   factory :vacationer do
-    sequence(:first_name) { |n| "Firstname #{n}" }
-    sequence(:last_name) { |n| "Lastname #{n}" }
+    sequence(:first_name) { |n| "First#{n}" }
+    sequence(:last_name) { |n| "Last#{n}" }
     checked_in { [true, false].sample}
     resort
   end
