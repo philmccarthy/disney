@@ -1,7 +1,6 @@
 class ResortsController < ApplicationController
 
   def index
-    # require "pry"; binding.pry
       if params[:number_of_rooms]
         @ordered_resorts = Resort.where("amount_of_rooms > ?", params[:number_of_rooms])
       elsif params[:commit] == "Sort by number of vacationers"
@@ -27,7 +26,7 @@ class ResortsController < ApplicationController
 
   def create
     resort = Resort.create!(resort_params)
-        redirect_to '/resorts'
+    redirect_to '/resorts'
   end
 
   def edit
@@ -57,10 +56,6 @@ class ResortsController < ApplicationController
     else
       @vacationers = @resort.vacationers
     end
-  end
-
-  def new_vacationer
-    @resort = Resort.find(params[:id])
   end
 
   private

@@ -49,7 +49,6 @@ RSpec.describe 'Rides of ThemePark', type: :feature do
     xyz = create(:ride, name: "xyz", theme_park: epcot)
     abc = create(:ride, name: "abc", theme_park: epcot)
     visit "/themeparks/#{epcot.id}/rides"
-    expect(xyz.name).to appear_before(abc.name)
     click_button "Alphabetize"
     expect(abc.name).to appear_before(xyz.name)
   end
